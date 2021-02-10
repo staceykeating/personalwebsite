@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import hamburger from '../src/hamburger.svg';
-import './App.css';
+import CloseIcon from "@material-ui/icons/Close";
+import './App.scss';
 
-function Menu() {
+function Menu(props) {
+  const [mode, setMode] = useState("EDIT");
   return (
-    <div className="menu-section">
-        <h3 class="menu">
+    <div>
+    {mode === "EDIT" && <div className="menu-section" onClick={() => setMode("SHOW")}>
+    
+        <h3 class="menu" >
     Menu
         </h3>
         <img src={hamburger}></img>
   
-    </div>
+    </div>}
+    {(mode === "SHOW") && (
+        <>
+          <h1 onClick={() => setMode("EDIT")}> Projects </h1>
+        </>
+      )}
+      </div>
   );
-}
+    }
 
 export default Menu; 
+
+
+// import Menu from "./Menu";
+
+
+//   return (
+//     <div>
+//       {mode === "EDIT" && <Menu onClick={() => setMode("SHOW")} />}
+//       {(mode === "SHOW") && (
+//         <>
+//           <CloseIcon onClick={() => setMode("EDIT")} />
+//         </>
+//       )}
+
+//     </div>
+//   );
+// }
